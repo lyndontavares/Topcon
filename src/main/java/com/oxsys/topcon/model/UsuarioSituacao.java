@@ -1,4 +1,4 @@
-package com.oxsys.topcon.model.enums;
+package com.oxsys.topcon.model;
 
 public enum UsuarioSituacao {
 

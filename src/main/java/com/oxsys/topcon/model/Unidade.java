@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.oxsys.topcon.model.enums.UnidadeTipo;
 
 @Entity
-@Table(name="tab_vaga")
+@Table(name="tab_unidade")
 public class Unidade {
 
 	@Id

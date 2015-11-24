@@ -1,8 +1,18 @@
 package com.oxsys.topcon.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tab_vaga")
 public class Vaga {
 
+	@Id
+	@GeneratedValue
 	private long id;
+	
 	
 	private String numeracao;
 
