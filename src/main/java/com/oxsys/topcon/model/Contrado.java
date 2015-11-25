@@ -39,10 +39,24 @@ public class Contrado {
 	@ManyToOne
 	@JoinColumn(name = "pessoa_id")
 	private Pessoa pessoa;
+	
+	@ManyToOne
+	@JoinColumn(name = "proprietario_id")
+	private Pessoa proprietario;
 
 	@ManyToOne
 	@JoinColumn(name="unidade_id")
 	private Unidade unidade;
+
+	
+	
+	public Pessoa getProprietario() {
+		return proprietario;
+	}
+
+	public void setProprietario(Pessoa proprietario) {
+		this.proprietario = proprietario;
+	}
 
 	public long getId() {
 		return id;
@@ -100,4 +114,28 @@ public class Contrado {
 		this.unidade = unidade;
 	}
 
+	public Contrado(long id, String numeroControle, ContratoTipo tipo, Date dataInicioVigencia, Date dataFinalVigencia,
+			Pessoa pessoa, Pessoa proprietario, Unidade unidade) {
+		super();
+		this.id = id;
+		this.numeroControle = numeroControle;
+		this.tipo = tipo;
+		this.dataInicioVigencia = dataInicioVigencia;
+		this.dataFinalVigencia = dataFinalVigencia;
+		this.pessoa = pessoa;
+		this.proprietario = proprietario;
+		this.unidade = unidade;
+	}
+
+	@Override
+	public String toString() {
+		return "Contrado [id=" + id + ", numeroControle=" + numeroControle + ", tipo=" + tipo + ", dataInicioVigencia="
+				+ dataInicioVigencia + ", dataFinalVigencia=" + dataFinalVigencia + ", pessoa=" + pessoa
+				+ ", proprietario=" + proprietario + ", unidade=" + unidade + "]";
+	}
+
+	public Contrado(){
+		
+	}
+	
 }

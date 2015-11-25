@@ -36,7 +36,29 @@ public class Vaga {
 	public void setNumeracao(String numeracao) {
 		this.numeracao = numeracao;
 	}
+
+	public Unidade getUnidade() {
+		return unidade;
+	}
+
+	public void setUnidade(Unidade unidade) {
+		this.unidade = unidade;
+	}
+
+	public Vaga(long id, Unidade unidade, String numeracao) {
+		super();
+		this.id = id;
+		this.unidade = unidade;
+		this.numeracao = numeracao;
+	}
+
+	@Override
+	public String toString() {
+		return "Vaga [id=" + id + ", unidade=" + unidade + ", numeracao=" + numeracao + "]";
+	}
 	
-	
+	public Vaga(){
+		
+	}
 	
 }

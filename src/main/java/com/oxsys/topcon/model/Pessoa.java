@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.oxsys.topcon.model.enums.PessoaSituacao;
 import com.oxsys.topcon.model.enums.Sexo;
 
@@ -38,7 +38,20 @@ public class Pessoa {
 	@Temporal(TemporalType.DATE)
 	private Date nascimento;
 	
- 	
+	@ JsonManagedReference 
+	@OneToMany(mappedBy="pessoa",fetch=FetchType.LAZY)
+	private List<Contato> contatos;
+	
+	
+	
+	public List<Contato> getContatos() {
+		return contatos;
+	}
+
+	public void setContatos(List<Contato> contatos) {
+		this.contatos = contatos;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -79,6 +92,26 @@ public class Pessoa {
 		this.nascimento = nascimento;
 	}
 
+	public Pessoa(long id, String nome, PessoaSituacao situacao, Sexo sexo, Date nascimento) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.situacao = situacao;
+		this.sexo = sexo;
+		this.nascimento = nascimento;
+	}
+
+	@Override
+	public String toString() {
+		return "Pessoa [id=" + id + ", nome=" + nome + ", situacao=" + situacao + ", sexo=" + sexo + ", nascimento="
+				+ nascimento + "]";
+	}
+
+ public Pessoa(){
+	 
+	
+}
+ 
  
 	
 }

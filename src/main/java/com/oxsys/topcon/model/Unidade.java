@@ -113,7 +113,29 @@ public class Unidade {
 		this.vagas = vagas;
 	}
 
+	public Unidade(long id, UnidadeTipo tipo, String quadra, String bloco, String rua, String numero, String andar,
+			long quarto, List<Vaga> vagas) {
+		super();
+		this.id = id;
+		this.tipo = tipo;
+		this.quadra = quadra;
+		this.bloco = bloco;
+		this.rua = rua;
+		this.numero = numero;
+		this.andar = andar;
+		this.quarto = quarto;
+		this.vagas = vagas;
+	}
 
-	
+	@Override
+	public String toString() {
+		return "Unidade [id=" + id + ", tipo=" + tipo + ", quadra=" + quadra + ", bloco=" + bloco + ", rua=" + rua
+				+ ", numero=" + numero + ", andar=" + andar + ", quarto=" + quarto + ", vagas=" + vagas + "]";
+	}
+
+
+	public Unidade(){
+		
+	}
 	
 }
