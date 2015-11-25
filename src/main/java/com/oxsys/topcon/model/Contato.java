@@ -1,6 +1,8 @@
 package com.oxsys.topcon.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,11 +18,12 @@ import com.oxsys.topcon.model.enums.ContatoTipo;
 public class Contato {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue	
 	private long id;
 	
 	private String nome;
 	
+	@Enumerated(EnumType.STRING)
 	private ContatoTipo tipo;
 	
 	private String telefone;

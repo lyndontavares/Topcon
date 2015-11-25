@@ -3,6 +3,8 @@ package com.oxsys.topcon.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +15,9 @@ public class Vaga {
 	@GeneratedValue
 	private long id;
 	
+	@ManyToOne
+	@JoinColumn(name="unidade_id")
+	private Unidade unidade;
 	
 	private String numeracao;
 

@@ -4,11 +4,17 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.oxsys.topcon.model.enums.PessoaSituacao;
 import com.oxsys.topcon.model.enums.Sexo;
 
@@ -23,15 +29,16 @@ public class Pessoa {
 	
 	private String nome;
 	
+	@Enumerated(EnumType.STRING)
 	private PessoaSituacao situacao;
-	
+
+	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
 	
+	@Temporal(TemporalType.DATE)
 	private Date nascimento;
 	
-    @OneToMany(mappedBy="pessoa")
-	private List<Contato> listaContatos;
-
+ 	
 	public long getId() {
 		return id;
 	}
@@ -72,20 +79,6 @@ public class Pessoa {
 		this.nascimento = nascimento;
 	}
 
-	public List<Contato> getListaContatos() {
-		return listaContatos;
-	}
-
-	public void setListaContatos(List<Contato> listaContatos) {
-		this.listaContatos = listaContatos;
-	}
-
-	@Override
-	public String toString() {
-		return "Pessoa [id=" + id + ", nome=" + nome + ", situacao=" + situacao + ", sexo=" + sexo + ", nascimento="
-				+ nascimento + ", listaContatos=" + listaContatos + "]";
-	}
-	
-	
+ 
 	
 }

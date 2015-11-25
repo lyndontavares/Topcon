@@ -2,6 +2,8 @@ package com.oxsys.topcon.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -28,8 +30,10 @@ public class Usuario {
 	@Column(nullable=false,length=20) 
 	private String senha;
 	
+	@Enumerated(EnumType.STRING)
 	private UsuarioSituacao situacao;
 	
+	@Enumerated(EnumType.STRING)
 	private UsuarioTipo admin;
 
 	public UsuarioTipo getAdmin() {

@@ -38,9 +38,8 @@ public class Unidade {
 	private long quarto;
 	
 	@ JsonIgnore 
-	@OneToMany(mappedBy = "tabela", fetch = FetchType.LAZY)
-	private List<Vaga> campos;
-	private Vaga vagaGaragem;
+	@OneToMany(mappedBy = "unidade", fetch = FetchType.LAZY)
+	private List<Vaga> vagas;
 
 	public long getId() {
 		return id;
@@ -106,13 +105,14 @@ public class Unidade {
 		this.quarto = quarto;
 	}
 
-	public Vaga getVagaGaragem() {
-		return vagaGaragem;
+	public List<Vaga> getVagas() {
+		return vagas;
 	}
 
-	public void setVagaGaragem(Vaga vagaGaragem) {
-		this.vagaGaragem = vagaGaragem;
+	public void setVagas(List<Vaga> vagas) {
+		this.vagas = vagas;
 	}
+
 
 	
 	
