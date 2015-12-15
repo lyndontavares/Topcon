@@ -1,4 +1,4 @@
-package com.oxsys.topcon.model;
+package com.oxsys.topcon.model.auth;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

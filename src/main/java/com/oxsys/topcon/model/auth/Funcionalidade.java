@@ -1,7 +1,6 @@
 package com.oxsys.topcon.model.auth;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,7 +9,6 @@ import javax.persistence.Table;
 public class Funcionalidade {
 
 	@Id
-	@GeneratedValue
 	private long id;
 	
 	private String descricao;

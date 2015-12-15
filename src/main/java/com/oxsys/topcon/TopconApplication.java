@@ -13,8 +13,10 @@ import com.oxsys.topcon.model.Contato;
 import com.oxsys.topcon.model.Contrado;
 import com.oxsys.topcon.model.Pessoa;
 import com.oxsys.topcon.model.Unidade;
-import com.oxsys.topcon.model.Usuario;
 import com.oxsys.topcon.model.Vaga;
+import com.oxsys.topcon.model.auth.Funcionalidade;
+import com.oxsys.topcon.model.auth.Permissao;
+import com.oxsys.topcon.model.auth.Usuario;
 import com.oxsys.topcon.model.enums.ContatoTipo;
 import com.oxsys.topcon.model.enums.ContratoTipo;
 import com.oxsys.topcon.model.enums.PessoaSituacao;
@@ -24,6 +26,8 @@ import com.oxsys.topcon.model.enums.UsuarioSituacao;
 import com.oxsys.topcon.model.enums.UsuarioTipo;
 import com.oxsys.topcon.repository.ContatoRepository;
 import com.oxsys.topcon.repository.ContratoRepository;
+import com.oxsys.topcon.repository.FuncionalidadeRepository;
+import com.oxsys.topcon.repository.PermissaoRepository;
 import com.oxsys.topcon.repository.PessoaRepository;
 import com.oxsys.topcon.repository.UnidadeRepository;
 import com.oxsys.topcon.repository.UsuarioRepository;
@@ -49,6 +53,10 @@ public class TopconApplication {
 	
 	@Autowired
 	UsuarioRepository repoUsuario;
+	
+	@Autowired PermissaoRepository repoPermissao;
+	
+	@Autowired FuncionalidadeRepository repoFuncionalidade;
 	
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
@@ -79,9 +87,72 @@ public class TopconApplication {
 			Usuario usu = new Usuario("usuario-"+i,"usuario-"+i,"123",UsuarioSituacao.ATIVO,UsuarioTipo.USER);
 			repoUsuario.save(usu);
 			
-			
 		}
-			
+		
+		Usuario u = new Usuario();
+		Funcionalidade f = new Funcionalidade();
+		Permissao p = new Permissao();
+
+		u.setId(1);
+		p.setUsuario(u);	
+		p.setFuncionalidade(f);
+		
+		f.setId(11);	f.setDescricao("pessoa.select");
+		repoFuncionalidade.save(f);
+		repoPermissao.save(p); p.setId(0);	
+		f.setId(12);	f.setDescricao("pessoa.insert");
+		repoFuncionalidade.save(f);
+		repoPermissao.save(p);	p.setId(0);
+		f.setId(13);	f.setDescricao("pessoa.update");
+		repoFuncionalidade.save(f);
+		repoPermissao.save(p); p.setId(0);
+		f.setId(14);	f.setDescricao("pessoa.delete");
+		repoFuncionalidade.save(f);
+		repoPermissao.save(p);	 p.setId(0);
+		
+		f.setId(21);	f.setDescricao("contrato.select");
+		repoFuncionalidade.save(f);
+		repoPermissao.save(p);	p.setId(0);
+		f.setId(22);	f.setDescricao("contrato.insert");
+		repoFuncionalidade.save(f);
+		repoPermissao.save(p);	p.setId(0);
+		f.setId(23);	f.setDescricao("contrato.update");
+		repoFuncionalidade.save(f);
+		repoPermissao.save(p);	p.setId(0);
+		f.setId(24);	f.setDescricao("contrato.delete");
+		repoFuncionalidade.save(f);
+		repoPermissao.save(p);	p.setId(0);
+
+		f.setId(31);	f.setDescricao("unidade.select");
+		repoFuncionalidade.save(f);
+		repoPermissao.save(p);	p.setId(0);
+		f.setId(32);	f.setDescricao("unidade.insert");
+		repoFuncionalidade.save(f);
+		repoPermissao.save(p);	p.setId(0);
+		f.setId(33);	f.setDescricao("unidade.update");
+		repoFuncionalidade.save(f);
+		repoPermissao.save(p);	p.setId(0);
+		f.setId(34);	f.setDescricao("unidade.delete");
+		repoFuncionalidade.save(f);
+		repoPermissao.save(p);	p.setId(0);
+
+		f.setId(41);	f.setDescricao("conta.select");
+		repoFuncionalidade.save(f);
+		repoPermissao.save(p);	p.setId(0);
+		f.setId(42);	f.setDescricao("conta.insert");
+		repoFuncionalidade.save(f);
+		repoPermissao.save(p);	p.setId(0);
+		f.setId(43);	f.setDescricao("conta.update");
+		repoFuncionalidade.save(f);
+		repoPermissao.save(p);	p.setId(0);
+		f.setId(44);	f.setDescricao("conta.delete");
+		repoFuncionalidade.save(f);
+		repoPermissao.save(p);	p.setId(0);
+
+		f.setId(101);	f.setDescricao("gerenciar.usuario");
+		repoFuncionalidade.save(f);
+		repoPermissao.save(p);	p.setId(0);
+	
 		
 	}
 }

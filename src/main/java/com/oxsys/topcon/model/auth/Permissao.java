@@ -7,8 +7,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.oxsys.topcon.model.Usuario;
-
 @Entity
 @Table(name="tab_permissao")
 public class Permissao {
@@ -20,6 +18,18 @@ public class Permissao {
 	@ManyToOne
 	@JoinColumn(name="usuario_id")
 	private Usuario usuario;
+
+	@ManyToOne
+	@JoinColumn(name="funcionalidade_id")
+	private Funcionalidade funcionalidade;
+	
+	public Funcionalidade getFuncionalidade() {
+		return funcionalidade;
+	}
+
+	public void setFuncionalidade(Funcionalidade funcionalidade) {
+		this.funcionalidade = funcionalidade;
+	}
 
 	public long getId() {
 		return id;

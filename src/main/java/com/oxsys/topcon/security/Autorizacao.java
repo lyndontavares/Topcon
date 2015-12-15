@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.oxsys.topcon.model.Usuario;
+import com.oxsys.topcon.model.auth.Usuario;
 import com.oxsys.topcon.repository.UsuarioRepository;
 
 import io.jsonwebtoken.Claims;
