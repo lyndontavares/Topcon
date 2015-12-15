@@ -1,132 +1,222 @@
-## (I) Instalando os módulos
+Introduction
+============
 
-Essa parte é a mais fácil. Baseada nas tarefas que você gostaria de automatizar, será necessário instalar os módulos do Gulp. No nosso exemplo, faremos um procedimento simples, de minificação de arquivos em JavaScript utilizando o Uglify. Então além dos módulos que farão o gulp funcionar (gulp e gulp-util), você precisará instalar o módulo da minificação (gulp-uglify) e de quebra instalaremos também um módulo para monitorar alterações nos arquivos .js e rodará a tarefa da minificação (gulp-watch)
+**AdminLTE** -- is a fully responsive admin template. Based on **[Bootstrap 3](https://github.com/twbs/bootstrap)** framework. Highly customizable and easy to use. Fits many screen resolutions from small mobile devices to large desktops. Check out the live preview now and see for yourself.
 
-```js
-$ npm install gulp --save-dev
-$ npm install gulp-util --save-dev
-$ npm install gulp-uglify --save-dev
-$ npm install gulp-watch --save-dev
+**Download & Preview on [Almsaeed Studio](https://almsaeedstudio.com)**
+
+Looking for Premium Templates?
+------------------------------
+**Almsaeed studio just opened a new premium templates page. Hand picked to insure the best quality and the most affordable prices. Visit https://almsaeedstudio.com/premium for more information.**
+
+
+!["AdminLTE Presentation"] (https://almsaeedstudio.com/AdminLTE2.png "AdminLTE Presentation")
+
+**AdminLTE** has been carefully coded with clear comments in all of its JS, LESS and HTML files. LESS has been used to increase code customizability.
+
+Installation
+------------
+There are multiple ways to install AdminLTE.
+
+####Download:
+
+Download from Github or [visit Almsaeed Studio](https://almsaeedstudio.com) and download the latest release.
+
+####Using The Command Line:
+
+**Github**
+
+- Fork the repository ([here is the guide](https://help.github.com/articles/fork-a-repo/)).
+- Clone to your machine
+```
+git clone https://github.com/YOUR_USERNAME/AdminLTE.git
 ```
 
-Note que para cada módulo instalado, utilizamos o parâmetro –save-dev. Isto modificará nosso arquivo package.json adicionando ao mesmo os módulos que a partir de agora são dependências para rodarmos as tarefas do Gulp. Se você for curioso, pode expiar o conteúdo do package.json, ele deve estar assim:
-
-```js
-{
-  "name": "gulpteste",
-  "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "gulp": "~3.3.0",
-    "gulp-util": "~2.2.9",
-    "gulp-uglify": "~0.1.0",
-    "gulp-watch": "~0.3.3"
-  }
-}
-```
-
-A grande vantagem de instalar os módulos desta maneira, é a fácil reinstalação de todas as dependências. Imagine que inadvertidamente alguém apagou a pasta node_modules do seu projeto. Ou mesmo, imagine que você gostaria de compartilhar este projeto com outro desenvolvedor. Não há a mínima necessidade de versionar a pasta node_modules. Basta ter o package.json atualizado e uma única instrução fará que com que tudo volte ao normal. A título de teste, exclua agora sua pasta node_modules… da até uma tristeza né, afinal você terá que reinstalar tudo novamente. A boa notícia é que agora tudo será bem mais facil, bastando rodar um:
-
-```js
-$ npm install
-```
-
-Pronto! Tudo voltou a ordem que estava anteriormente.
-
-## (II) Configurando suas tarefas
-
-Para rodar o Gulp.js, você vai precisar configurar as tarefas que serão executadas. A título de exemplo, vamos criar 2 pastas, uma chamada src e outra chamada build, na raiz do projeto.
-
-Dentro da pasta src, vamos criar uma pasta js onde ficarão todos os arquivos originais de desenvolvimento.
-
-Com a automatização, será criada automaticamente uma pasta js dentro de build, com os arquivos js que estão na pasta src, porém estes últimos estarão minificados pelo Uglify. Para essa mágica toda acontecer, vamos criar na raiz o arquivo de configuração das tarefas, o gulpfile.js.
-
-Abra o arquivo e mãos a obra. O primeiro passo é instanciar os módulos que vamos utilizar:
-
-```js
-// instanciando módulos
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var uglify = require('gulp-uglify');
-var watch = require('gulp-watch');
-```
-
-A primeira tarefa que vamos definir, é que vai minificar os arquivos da pasta src/js para pasta build/js. Para isto, utilizaremos o método gulp.task(), que recebe 2 parâmetros. O primeiro é o nome da nova tarefa e o segundo uma função callback com os steps que devem ser executados a partir desta:
-
-```js
-gulp.task('scripts', function() {
-    // corpo da tarefa
-});
-```
-
-## (III) Para configurar a minificação, precisamos definir 3 ações:
-
-1 – recuperar os arquivos fonte na pasta de origem;
-2 – aplicar a minificação (uglify);
-3 – colocar o resultado na pasta de destino.
-
-O código ficará assim:
-
-```js
-
-gulp.task('scripts', function() {
-    // corpo da tarefa 
-    return gulp
-            .src(['src/js/**/*.js'])
-            .pipe(uglify())
-            .pipe(gulp.dest('build/js'));      
-});
+**Bower**
 
 ```
-
-Pronto! Para rodá-la, podemos ir ao terminal e digitar:
-
-```js
-$ gulp scripts
-```
-E conferir se os arquivos foram minificados em build/js.
-
-Para deixar a coisa mais legal, vamos configurar a tarefa que vai monitorar alterações na pasta src/js e rodar a tarefa ‘scripts’, responsável pela minificação. Começamos da mesma forma:
-
-```js
-gulp.task('watch', function() {
-   // corpo da tarefa 
-});
+bower install admin-lte
 ```
 
-Dentro da nova task, vamos utilizar o método gulp.watch() que recebe 2 parâmetros. No primeiro, definimos a pasta onde estão os nossos arquivos fonte e um função callback que será executada toda vez que um desses arquivos for modificado:
+**Composer**
 
-```js
-gulp.task('watch', function() {
-    // corpo da tarefa 
-    gulp.watch('src/js/**/*.js', function(event) {});
-});
+```
+composer require "almasaeed2010/adminlte=~2.0"
 ```
 
-Agora no callback, o método gutil.log() exibirá informações do arquivo alterado, e através do método gulp.run() definimos qual tarefa será executada. Isso acontecerá toda vez que um arquivo presente em src/js for alterado:
+Documentation
+-------------
+Visit the [online documentation](https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html) for the most
+updated guide. Information will be added on a weekly basis.
 
-```js
-gulp.task('watch', function() {
-    // corpo da tarefa 
-    gulp.watch('src/js/**/*.js', function(event) {
-        gutil.log('File '+event.path+' was '+event.type+', running tasks...');
-        gulp.run('scripts');
-    });
-});
-```
+Browser Support
+---------------
+- IE 9+
+- Firefox (latest)
+- Chrome (latest)
+- Safari (latest)
+- Opera (latest)
 
-Vamos conferir, no terminal execute:
+Contribution
+------------
+Contribution are always **welcome and recommended**! Here is how:
 
-```js
-$ gulp watch
-```
+- Fork the repository ([here is the guide](https://help.github.com/articles/fork-a-repo/)).
+- Clone to your machine ```git clone https://github.com/YOUR_USERNAME/AdminLTE.git```
+- Make your changes
+- Create a pull request
 
-Ai basta alterar qualquer arquivo .js da pasta fonte e ver o resultado na pasta build/js.
+#### Contribution Requirements:
 
-> http://blog.caelum.com.br/bye-bye-grunt-js-hello-gulp-js/
+- When you contribute, you agree to give a non-exclusive license to Almsaeed Studio to use that contribution in any context as we (Almsaeed Studio) see appropriate.
+- If you use content provided by another party, it must be appropriately licensed using an [open source](http://opensource.org/licenses) license.
+- Contributions are only accepted through Github pull requests.
+- Finally, contributed code must work in all supported browsers (see above for browser support).
+
+License
+-------
+AdminLTE is an open source project by [Almsaeed Studio](https://almsaeedstudio.com) that is licensed under [MIT](http://opensource.org/licenses/MIT). Almsaeed Studio
+reserves the right to change the license of future releases.
+
+Todo List
+---------
+- ~~Light sidebar colors~~ (Done v2.1.0)
+- ~~Right sidebar~~ (Done v2.1.0)
+- ~~Minified main-sidebar~~ (Done v2.1.0)
+- Right to left support
+- Custom pace style
+
+Legacy Realeases
+----------------
+AdminLTE 1.x can be easily upgraded to 2.x using [this guide](https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html#upgrade), but if you intend to keep using AdminLTE 1.x, you can download the latest release from the [releases](https://github.com/almasaeed2010/AdminLTE/releases) section above.
+
+Change log
+----------
+**v2.3.0:**
+- Added social widgets (found in the widgets page)
+- Added profile page
+- Fix issue #430 (requires ```.hold-transition``` to be added to ```<body>```)
+- Fix issue #578
+- Fix issue #579
+
+**v2.2.1:**
+- Bug Fixes
+- Removed many ```!important``` statements in css
+- Activate boxWidget automatically when created after the page has loaded
+- Activate sidebar menu treeview links automatically when created after the page has loaded
+- Updated Font Awesome thanks to @Dennis14e
+- Added JSHint to Grunt tasks (Find JS errors)
+- Added CSSLint to Grunt tasks (Find CSS errors)
+- Added Image to Grunt tasks (compress images)
+- Added Clean to Grunt tasks (remove unwanted files like uncompressed images)
+- Updated Bootstrap to 3.3.5
+
+**v2.2.0:**
+- Bug fixes
+- Added support for [Select2](https://select2.github.io/)
+- Updated ChartJS
+
+**v2.1.2:**
+- Added explicit BoxWidget activation function issue #450
+- Crushed some bugs
+
+**v2.1.1:**
+- Fix version error
+
+**v2.1.0:**
+- Update Ion Icons
+- Added right sidebar ```.control-sidebar```
+- Control sidebar has 2 open effects: slide over content and push content
+- Control sidebar converts to always slide over content on small screens
+- Added 6 new light sidebar skins
+- Updated demo menu
+- Added ChartJS preview page
+- Fixed some minor bugs
+- Added light control sidebar skin
+- Added expand on hover option for sidebar mini
+- Added fixed control sidebar layout
+
+**v2.0.5:**
+- Fixed issue #288
+
+**v2.0.4:**
+- Fixed bower.json to pick up newest release.
+
+**v2.0.3**
+- Bug fixes
+- Fixed extra page when printing issue #264
+- Updated documentation and fixed links scrolling issue
+- Created print.less file (this makes it easier if you want to create a seperate CSS file for printing)
+- Fixed sidebar stretching issue #275
+- Fixed checkbox out of bounds issue in WYSIHTML5 editor.
+
+**v2.0.2:**
+- Solved issue with hidden arrow in select inputs.
+
+**v2.0.1:**
+- Updated README.md
+- Fixed versioning issue in CSS, LESS, and JS
+- Updated box-shadow for boxes
+- Updated docs
+
+**v2.0.0:**
+
+- Major layout bug fixes
+- Change in layout mark up
+- Added transitions to the sidebar
+- New skins and modified previous skins
+- Change in color scheme to a more complementing scheme
+- Added footer support
+- Removed pace.js from the main app.js
+- Added support for collapsed sidebar as an initial state (add .sidebar-collapse to the body tag)
+- Added boxed layout (.layout-boxed)
+- Enhanced consistency in padding and margining
+- Updated Bootstrap to 3.3.2
+- Fixed navbar dropdown menu on small screens positioning issues.
+- Updated Ion Icons to 2.0.0
+- Updated FontAwesome to 4.3.0
+- Added ChartJS 1.0.1
+- Removed iCheck dependency
+- Created Dashboard 2.0
+- Created new Chat widget (DirectChat)
+- Added transitions to DirectChat
+- Added contacts pane to DirectChat
+- Changed .right-side to .content-wrapper
+- Changed .navbar-right to .navbar-custom-menu
+- Removed unused files
+- Updated lockscreen style (HTML markup changed!)
+- Updated Login & Registration pages (HTML markup changed!)
+- Updated buttons style.
+- Enhanced border-radius consistency
+- Added mailbox: inbox, read, and compose pages
+- Bootstrap & jQuery are now hosted locally
+- Created documentation.
+
+**ver 1.2.0:**
+
+- Fixed the sidebar scroll issue when using the fixed layout.
+- Added [Bootstrap Social Buttons](http://lipis.github.io/bootstrap-social/ "Bootstrap Social") plugin.
+- Fixed RequireJS bug. Thanks to [StaticSphere](https://github.com/StaticSphere "github user").
+
+**ver 1.1.0:**
+
+- Added new skin. class: .skin-black
+- Added [pace](http://github.hubspot.com/pace/docs/welcome/ "pace") plugin.
+
+Image Credits
+-------------
+[Pixeden](http://www.pixeden.com/psd-web-elements/flat-responsive-showcase-psd)
+
+[Graphicsfuel](http://www.graphicsfuel.com/2013/02/13-high-resolution-blur-backgrounds/)
+
+[Pickaface](http://pickaface.net/)
+
+[Unsplash](https://unsplash.com/)
+
+[Uifaces](http://uifaces.com/)
+
+Donations
+---------
+Donations are **greatly appreciated!**
+
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif "AdminLTE Presentation")](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=629XCUSXBHCBC "Donate")

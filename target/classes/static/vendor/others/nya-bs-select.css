@@ -24,6 +24,9 @@
 .nya-bs-select > .btn {
   width: 100%;
   padding-right: 25px;
+  background-color: #ffffff !important;
+  border-radius: 0px !important;
+  border: 1px solid #ccc !important;
 }
 .nya-bs-select > .btn .filter-option {
   display: inline-block;
