@@ -8,7 +8,13 @@ function ($http, $scope, PessoaService,toastr, toastrConfig, $uibModal,TipoPesso
 
 	$scope.filtro={};
 	$scope.filtrar=function(){
-		console.log( $scope.filtro );
+		console.log($scope.filtro);
+		$scope.filtro.situacao=$scope.filtro.situacao.descricao;
+		PessoaService.getFilter($scope.filtro)
+		.success(function(data){
+		 $scope.pessoaOptions.data=data;
+		})
+		
 	};
 
 	$scope.pessoaOptions = {
@@ -76,7 +82,7 @@ function ($http, $scope, PessoaService,toastr, toastrConfig, $uibModal,TipoPesso
 		})
 	};	
 
-	$scope.load();
+	//$scope.load();
  
 	$scope.addPessoa = function (size) {
 		var modalInstance = $uibModal.open({

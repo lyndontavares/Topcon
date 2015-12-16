@@ -25,7 +25,7 @@ private PessoaRepository repo;
 			pessoa.setSituacao( PessoaSituacao.ATIVA  );
 		}
 		
-		return repo.findByIdOrNomeOrSituacao( pessoa.getId() , pessoa.getNome() , pessoa.getSituacao().toString()  );
+		return repo.findByIdOrNomeOrSituacao( pessoa.getId() , pessoa.getNome() , pessoa.getSituacao() );
 		
 	}
 	

@@ -10,6 +10,10 @@ function($http,SERVER_BASE) {
 
     var dataFactory = {};
 
+    dataFactory.getFilter = function (obj) {
+        return $http.post(SERVER_BASE+'api/pessoa/filtro',obj);
+    };
+
     dataFactory.getAll = function () {
         return $http.get(urlBase);
     };
