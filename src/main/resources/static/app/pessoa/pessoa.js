@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('app').controller('PessoaController', 
-['$http', '$scope','PessoaService', 
-function ($http, $scope, PessoaService) {
+['$http', '$scope', 'PessoaService', 'toastr', 'toastrConfig', 
+function ($http, $scope, PessoaService,toastr, toastrConfig) {
 
 
 	$scope.pessoaOptions = {
@@ -30,14 +30,41 @@ function ($http, $scope, PessoaService) {
 				enableColumnMenu: false
 			}, { name: 'acao'        , field:'id' , displayName:'Ação',
  	               cellTemplate:
-					'<div class="ui-grid-cell-contents pull-right" ng-controller="PessoaCtrl"> ' +
-					'<a class="btn  btn-primary btn-xs" ng-click="deletar( COL_FIELD, row.id )" href="#"><span class="glyphicon glyphicon glyphicon-erase" aria-hidden="true"></span> Deletar</a>'+
+					'<div class="ui-grid-cell-contents pull-right" ng-controller="PessoaController"> ' +
+					'<a class="btn  btn-primary btn-xs" ng-click="deletar( row.entity.id )" href="#"><span class="glyphicon glyphicon glyphicon-erase" aria-hidden="true"></span> Deletar</a>'+
 					'</div>', width: 76, enableColumnMenu: false, enableSorting: false, enableFiltering:false
 		}
 
 		]
 	};
 
+
+	$scope.deletar = function( id ){
+		//console.log(id);
+		
+		PessoaService.delete(id)
+		.success(function(data){
+			//console.log(data);
+			$scope.load();
+		})
+		.error(function(data, status, headers, config){
+			console.log(status);
+			
+	  	    if ( status == 409 ){
+	  	  
+				//openedToasts.push(
+				toastr.error(
+						 'Pessoa não pode ser exluída.',
+						 '409 - Registro(s) relacionado(s).' 
+				);
+				
+			  };
+
+			
+		});
+		
+		
+	};
 
 	$scope.load = function(){
 		
