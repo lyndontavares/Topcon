@@ -1,16 +1,16 @@
-<div box titulo="Consultar Pessoa" cor="info">
+<div box titulo="Pessoa" cor="info">
 
 	<div class="row">
 		<div class="col-md-12">
 			
 			<div class="mailbox-controls">
                 <!-- Check all button -->
-                <button type="button" class="btn btn-default btn-sm checkbox-toggle"  ui-sref="wiz0"><i class="fa fa-plus"></i>
+                <button type="button" class="btn btn-default btn-sm checkbox-toggle"  ng-click="addPessoa()"><i class="fa fa-plus"></i> Adicionar
                 </button>
                 <div class="btn-group">
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-edit" ></i></button>
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></button>
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-print"></i></button>
+
+
+                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-print"></i> Imprimir</button>
                 </div>
                 
               </div>
@@ -19,33 +19,21 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-md-4">
-			<div dxselectx titulo="Nome" opcoes="filiais" modelo="filial" orientacao="vertical"></div>
-		</div>
-		<div class="col-md-4">
-			<div dxselectx titulo="Email" opcoes="departamentos" modelo="departamento" orientacao="vertical"></div>
-		</div>
-		<div class="col-md-4">
-			<div dxselectx titulo="Entidad" opcoes="entidades" modelo="entidade" orientacao="vertical"></div>
-		</div>
-	</div>
 
 	<div class="row">
 		<div class="col-md-4">
-			<dxinputv tipo="TEXT" id="" titulo="Nascimento" dica="Comprobante" modelo="">
-			</dxinputv>
+			<div dxselectx titulo="Situação" opcoes="filiais" modelo="filial" orientacao="vertical"></div>
 		</div>
 		<div class="col-md-4">
-			<dxinputv tipo="TEXT" id="" titulo="Documento" dica="Documento" modelo="documento">
+			<dxinputv tipo="TEXT" id="" titulo="Nome" dica="Nome" modelo="nome">
 			</dxinputv>
 		</div>
 		<div class="col-md-2">
-			<dxinputv tipo="TEXT" id="" titulo="Codigo" dica="codigo" modelo="codigo">
+			<dxinputv tipo="NUMBER" id="" titulo="Código" dica="código" modelo="id">
 			</dxinputv>
 		</div>
 		<div class="col-md-2">
-			<div dxbutton icon="" cor="blue" titulo="Filtrar" modelo="filtar()"></div>
+			<div dxbutton icon="" cor="blue" titulo="Aplicar filtro" modelo="filtar()"></div>
 		</div>
 		
 		

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('app').controller('PessoaController', 
-['$http', '$scope', 'PessoaService', 'toastr', 'toastrConfig', 
-function ($http, $scope, PessoaService,toastr, toastrConfig) {
+['$http', '$scope', 'PessoaService', 'toastr', 'toastrConfig', '$uibModal' , 
+function ($http, $scope, PessoaService,toastr, toastrConfig, $uibModal) {
 
 
 	$scope.pessoaOptions = {
@@ -75,6 +75,20 @@ function ($http, $scope, PessoaService,toastr, toastrConfig) {
 	};	
 
 	$scope.load();
-
+ 
+	$scope.addPessoa = function (size) {
+		var modalInstance = $uibModal.open({
+			animation: true,
+			templateUrl: '/app/pessoa/pessoa-modal.html',
+			controller: 'PessoaModalController',
+			size: size
+		});
+		modalInstance.result.then(function ( pessoa ) {
+			$scope.pessoa = pessoa;
+			console.info(pessoa);
+		}, function () {
+			console.info('Modal dismissed at: ' + new Date());
+		});
+	};
 
 }]);
