@@ -2,45 +2,54 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			
+
 			<div class="mailbox-controls">
-                <!-- Check all button -->
-                <button type="button" class="btn btn-default btn-sm checkbox-toggle"  ng-click="addPessoa()"><i class="fa fa-plus"></i> Adicionar
-                </button>
-                <div class="btn-group">
+				<!-- Check all button -->
+				<button type="button" class="btn btn-default btn-sm checkbox-toggle" ng-click="addPessoa('lg')"><i class="fa fa-plus"></i> Adicionar
+				</button>
+				<div class="btn-group">
 
 
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-print"></i> Imprimir</button>
-                </div>
-                
-              </div>
-			
-			
+					<button type="button" class="btn btn-default btn-sm"><i class="fa fa-print"></i> Imprimir</button>
+				</div>
+
+
+			</div>
+
+
 		</div>
 	</div>
 
 
 	<div class="row">
 		<div class="col-md-4">
-			<div dxselectx titulo="Situação" opcoes="filiais" modelo="filial" orientacao="vertical"></div>
+			<div dxselectv titulo="Situação" opcoes="listaSituacao" modelo="filtro.situacao" orientacao="vertical"></div>
 		</div>
 		<div class="col-md-4">
-			<dxinputv tipo="TEXT" id="" titulo="Nome" dica="Nome" modelo="nome">
+			<dxinputv tipo="TEXT" id="" titulo="Nome" dica="Nome" modelo="filtro.nome">
 			</dxinputv>
 		</div>
 		<div class="col-md-2">
-			<dxinputv tipo="NUMBER" id="" titulo="Código" dica="código" modelo="id">
+			<dxinputv tipo="NUMBER" id="" titulo="Código" dica="código" modelo="filtro.id">
 			</dxinputv>
 		</div>
+
+		<!--<div class="col-md-2">
+			<div dxbutton icon="" cor="blue" titulo="Aplicar filtro" modelo="btnFiltro"></div>
+		</div>-->
+
 		<div class="col-md-2">
-			<div dxbutton icon="" cor="blue" titulo="Aplicar filtro" modelo="filtar()"></div>
+			<div class="form-group">
+				<button type="button" ng-click="filtrar()" class="form-control btn bg-blue" style="margin: 24px 0px 24px;"><i class="fa"></i> Aplicar Filtro</button>
+			</div>
 		</div>
-		
-		
+
+
+
 	</div>
 
 
-<!--
+	<!--
 	<div class="row">
 		<div class="col-md-3">
 			<div dxselectv titulo="Tipo" opcoes="tipoFaturas" modelo="tipofatura" orientacao="vertical"></div>

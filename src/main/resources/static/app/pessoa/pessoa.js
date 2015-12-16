@@ -1,9 +1,15 @@
 'use strict';
 
 angular.module('app').controller('PessoaController', 
-['$http', '$scope', 'PessoaService', 'toastr', 'toastrConfig', '$uibModal' , 
-function ($http, $scope, PessoaService,toastr, toastrConfig, $uibModal) {
+['$http', '$scope', 'PessoaService', 'toastr', 'toastrConfig', '$uibModal' , 'TipoPessoaService',
+function ($http, $scope, PessoaService,toastr, toastrConfig, $uibModal,TipoPessoaService) {
 
+	$scope.listaSituacao = TipoPessoaService.getAll;
+
+	$scope.filtro={};
+	$scope.filtrar=function(){
+		console.log( $scope.filtro );
+	};
 
 	$scope.pessoaOptions = {
 
@@ -24,6 +30,7 @@ function ($http, $scope, PessoaService,toastr, toastrConfig, $uibModal) {
 				displayName: 'Nome',
 				enableColumnMenu: false
 			}, {
+				
 				name: 'situacao',
 				field: 'situacao',
 				displayName: 'Situação',
@@ -48,22 +55,17 @@ function ($http, $scope, PessoaService,toastr, toastrConfig, $uibModal) {
 			$scope.load();
 		})
 		.error(function(data, status, headers, config){
-			console.log(status);
+			//console.log(status);
 			
 	  	    if ( status == 409 ){
-	  	  
-				//openedToasts.push(
 				toastr.error(
 						 'Pessoa não pode ser exluída.',
 						 '409 - Registro(s) relacionado(s).' 
-				);
-				
+				);				
 			  };
-
-			
+		
 		});
-		
-		
+				
 	};
 
 	$scope.load = function(){

@@ -8,4 +8,5 @@ import com.oxsys.topcon.model.Pessoa;
 @RepositoryRestResource(collectionResourceRel = "pessoa", path = "pessoa", exported = true)
 public interface PessoaRepository extends PagingAndSortingRepository<Pessoa, Long>  {
 	
+	Iterable<Pessoa> findByIdOrNomeOrSituacao( long id, String nome, String situacao );
 }

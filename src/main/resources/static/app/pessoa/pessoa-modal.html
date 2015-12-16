@@ -1,23 +1,26 @@
-<div box titulo="Adicionar Pessoa" cor="info">
+<div box titulo="Adicionar Pessoa" cor="danger">
 
 
 	<div class="row">
 		<div class="col-md-4">
-			<div dxselectx titulo="Situação" opcoes="filiais" modelo="filial" orientacao="vertical"></div>
+			<div dxselectv titulo="Situação" opcoes="tipoPessoa" modelo="pessoa.tipo" orientacao="vertical"></div>
 		</div>
 		<div class="col-md-4">
-			<dxinputv tipo="TEXT" id="" titulo="Nome" dica="Nome" modelo="nome">
+			<dxinputv tipo="TEXT" id="" titulo="Nome" dica="Nome" modelo="pessoa.nome">
 			</dxinputv>
 		</div>
 		<div class="col-md-4">
-			<dxinputv tipo="NUMBER" id="" titulo="Código" dica="código" modelo="id">
+			<dxinputv tipo="NUMBER" id="" titulo="Código" dica="código" modelo="pessoa.id">
 			</dxinputv>
 		</div>
 		
 	</div>
+	
+	<br><br><br><br><br><br>
 
 	<div class="box-footer">
-		<button class="btn bg-blue pull-right " type="button" ng-click="ok()">Gravar</button>
+		<button class="btn bg-green pull-right " type="button" ng-click="ok()">Gravar</button>
+		&nbsp;
 		<button class="btn bg-default pull-right " type="button" ng-click="ok()">Cancelar</button>
 	</div>
 
