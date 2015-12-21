@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
+Implementation-Vendor: Pivotal Software, Inc.
 Implementation-Title: topcon
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: lyndontavares
 Implementation-Vendor-Id: com.oxsys.topcon
-Build-Jdk: 1.8.0_65
+Build-Jdk: 1.7.0_79
+Built-By: lyndon-pc
 Created-By: Maven Integration for Eclipse
-Implementation-Vendor: Pivotal Software, Inc.
 
