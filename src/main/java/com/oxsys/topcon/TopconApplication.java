@@ -7,10 +7,13 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 
 import com.oxsys.topcon.model.Contato;
 import com.oxsys.topcon.model.Contrado;
+import com.oxsys.topcon.model.FormDinamico;
 import com.oxsys.topcon.model.Pessoa;
 import com.oxsys.topcon.model.Unidade;
 import com.oxsys.topcon.model.Vaga;
@@ -21,17 +24,20 @@ import com.oxsys.topcon.model.enums.ContatoTipo;
 import com.oxsys.topcon.model.enums.ContratoTipo;
 import com.oxsys.topcon.model.enums.PessoaSituacao;
 import com.oxsys.topcon.model.enums.Sexo;
+import com.oxsys.topcon.model.enums.TipoArtefato;
 import com.oxsys.topcon.model.enums.UnidadeTipo;
 import com.oxsys.topcon.model.enums.UsuarioSituacao;
 import com.oxsys.topcon.model.enums.UsuarioTipo;
 import com.oxsys.topcon.repository.ContatoRepository;
 import com.oxsys.topcon.repository.ContratoRepository;
+import com.oxsys.topcon.repository.FormDinamicoRepository;
 import com.oxsys.topcon.repository.FuncionalidadeRepository;
 import com.oxsys.topcon.repository.PermissaoRepository;
 import com.oxsys.topcon.repository.PessoaRepository;
 import com.oxsys.topcon.repository.UnidadeRepository;
 import com.oxsys.topcon.repository.UsuarioRepository;
 import com.oxsys.topcon.repository.VagaRepository;
+import com.oxsys.topcon.security.JwtFilter;
 
 @SpringBootApplication
 public class TopconApplication {
@@ -57,6 +63,8 @@ public class TopconApplication {
 	@Autowired PermissaoRepository repoPermissao;
 	
 	@Autowired FuncionalidadeRepository repoFuncionalidade;
+	
+	@Autowired FormDinamicoRepository repoDinamico;
 	
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
@@ -153,6 +161,19 @@ public class TopconApplication {
 		repoFuncionalidade.save(f);
 		repoPermissao.save(p);	p.setId(0);
 	
-		
+		FormDinamico form = new FormDinamico(0,"form1","<h1>template1</h1>",TipoArtefato.FORM);
+		repoDinamico.save(form);
+
 	}
+	
+	
+	@Bean
+    public FilterRegistrationBean jwtFilter() {
+        final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+        registrationBean.setFilter(new JwtFilter());
+        registrationBean.addUrlPatterns("/apiX/*");
+        return registrationBean;
+	}
+	
+	
 }
