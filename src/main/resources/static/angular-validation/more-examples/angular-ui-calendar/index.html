@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="myApp" ng-strict-di ng-cloak="">
+  <head>
+    <meta charset="utf-8" />
+    <title>Angular-Validation Example with Interpolation</title>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../style.css">
+  </head>
+
+  <body ng-controller="Ctrl as vm">
+    <div class="container">
+      <h2>Example of Angular-Validation Date validation error after select from ui datepicker.</h2>
+      <hr/>
+        <label class="control-label">Min Date: {{vm.minDate | date:'dd/MM/yyyy'}}</label> |
+        <label class="control-label">Max Date {{vm.maxDate | date:'dd/MM/yyyy'}}</label>
+      <hr/>
+      <form name="vm.test">
+        <label class="control-label">Date</label>
+        <div class="input-group">
+          <input
+            type="text"
+            id="dateOfChange"
+            name="dateOfChange"
+            class="form-control"
+            validation="required|date_euro_long_between:{{vm.minDate | date:'dd/MM/yyyy'}},{{vm.maxDate | date:'dd/MM/yyyy'}}"
+            validation-error-to="dateOfChangeValidation"
+            ng-model="vm.model.dateOfChange"
+            datepicker-popup="{{vm.datePickerFormat}}"
+            datepicker-options="vm.dateOptions"
+            datepicker-mode="'day'"
+            is-open="vm.isChangeDatePickerOpen"
+            min-date="vm.minDate"
+            max-date="vm.maxDate"
+            />
+          <span class="input-group-btn">
+              <button type="button" class="btn btn-default"
+                      data-ng-click="vm.openDatePicker($event)">
+                  <i class="glyphicon glyphicon-calendar"></i>
+              </button>
+          </span>
+        </div>
+        <div id="dateOfChangeValidation" class="validation text-danger"></div>
+      </form>
+
+
+      <br/>
+      <br/>
+      <div class="alert alert-danger alert-dismissable" ng-show="vm.test.$validationSummary.length &gt; 0">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><strong>ERRORS!</strong></h4>
+        <ul>
+            <li ng-repeat="item in vm.test.$validationSummary">{{ item.field }}: {{item.message}}</li>
+        </ul>
+      </div>
+
+      <ng-view></ng-view>
+    </div>
+
+    <!-- external librairies CDN -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
+
+    <!-- angular-translate -->
+    <!-- Visit Angular-Translate https://github.com/PascalPrecht/angular-translate -->
+    <script src="../../vendors/angular-translate/angular-translate.min.js"></script>
+    <script src="../../vendors/angular-translate/angular-translate-loader-static-files.min.js"></script>
+
+    <!-- Angular-UI -->
+    <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.2.js"></script>
+
+    <!-- Angular-Validation -->
+    <script type="text/javascript" src="../../dist/angular-validation.min.js"></script>
+    <!--
+    <script type="text/javascript" src="../../src/validation-directive.js"></script>
+    <script type="text/javascript" src="../../src/validation-service.js"></script>
+    <script type="text/javascript" src="../../src/validation-common.js"></script>
+    <script type="text/javascript" src="../../src/validation-rules.js"></script>
+    -->
+
+    <!-- my application -->
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html ng-app="myApp" ng-strict-di ng-cloak>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Angular-Validation (ghiscoding)</title>
+	  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	  <link rel="stylesheet" href="style.css">
+	</head>
+
+	<body ng-controller="Ctrl">
+		<div class="container">
+			<h1>Angular-Validation Directive|Service (ghiscoding)</h1>
+			<a href="https://github.com/ghiscoding/angular-validation">Ghiscoding Github Project</a> |
+			<a href="http://plnkr.co/edit/jADq7H?p=preview">Plunker Live Demo</a>
+
+			<hr/>
+
+			<span class="text-info"><strong>{{'CHANGE_LANGUAGE' | translate}}: </strong></span>
+			<div class="btn-group btn-group-sm">
+				<button type="button" name="btn_english" class="btn btn-default" title="English" ng-click="switchLanguage('en')">EN</button>
+				<button type="button" name="btn_spanish" class="btn btn-default" title="Español" ng-click="switchLanguage('es')">ES</button>
+				<button type="button" name="btn_french" class="btn btn-default" title="Français" ng-click="switchLanguage('fr')">FR</button>
+				<button type="button" name="btn_norwegian" class="btn btn-default" title="Norsk" ng-click="switchLanguage('no')">NO</button>
+				<button type="button" name="btn_polish" class="btn btn-default" title="Polski" ng-click="switchLanguage('pl')">PL</button>
+				<button type="button" name="btn_portuguese" class="btn btn-default" title="Português" ng-click="switchLanguage('pt-br')">PT</button>
+				<button type="button" name="btn_russian" class="btn btn-default" title="Pусский" ng-click="switchLanguage('ru')">RU</button>
+			</div>
+
+			<span class="text-info" style="margin-left: 20px"><strong>Type: </strong></span>
+			<div class="btn-group btn-group-sm">
+				<button type="button" name="btn_goto_Directive" class="btn btn-default" ng-click="goto('/validate-directive')">Directive</button>
+				<button type="button" name="btn_goto_Service" class="btn btn-default" ng-click="goto('/validate-service')">Service</button>
+				<button type="button" name="btn_goto_2forms" class="btn btn-default" ng-click="goto('/validate-2forms')">2 Forms</button>
+				<button type="button" name="btn_goto_ngrepeat" class="btn btn-default" ng-click="goto('/validate-ngRepeat')">ngRepeat</button>
+				<a name="btn_goto_3rdpartyaddon" class="btn btn-default" href="more-examples/addon-3rdParty/">3rd Party Addon</a>
+			</div>
+
+			<br/><hr/>
+
+			<ng-view></ng-view>
+
+			<!-- external librairies CDN -->
+			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
+			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.js"></script>
+
+			<!-- angular-translate -->
+			<!-- Visit Angular-Translate https://github.com/PascalPrecht/angular-translate -->
+			<script src="vendors/angular-translate/angular-translate.min.js"></script>
+			<script src="vendors/angular-translate/angular-translate-loader-static-files.min.js"></script>
+
+			<!-- You can also load angular-validation with the all in 1 minified file -->
+		  	<script type="text/javascript" src="dist/angular-validation.min.js"></script>
+
+			<!-- angular-validation, directive and service are totally independent you can load one or the other or you can use them in parallel too. But `-common.js` and `-rules.js` are mandatory. -->
+			<!--
+			<script type="text/javascript" src="src/validation-directive.js"></script>
+			<script type="text/javascript" src="src/validation-service.js"></script>
+		  	<script type="text/javascript" src="src/validation-common.js"></script>
+		  	<script type="text/javascript" src="src/validation-rules.js"></script>
+			-->
+
+			<!-- your ng-app file -->
+		  	<script type="text/javascript" src="app.js"></script>
+	  	</div>
+  	</body>
+</html>
