@@ -3,8 +3,8 @@ Controle de condomínios.
 
 # Tecnologias
 
-*Spring Boot
-*AngularJS
+* Spring Boot
+* AngularJS
 
 
 
