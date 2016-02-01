@@ -36,6 +36,16 @@ public class Veiculo {
 	public void setPlaca(String placa) {
 		this.placa = placa;
 	}
+
+	public Veiculo(long id, String placa) {
+		super();
+		this.id = id;
+		this.placa = placa;
+	}
+	
+	public Veiculo() {
+		
+	}
 	
 	
 	

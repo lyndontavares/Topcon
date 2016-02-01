@@ -9,6 +9,7 @@ import com.oxsys.topcon.model.Contrado;
 import com.oxsys.topcon.model.Pessoa;
 import com.oxsys.topcon.model.Unidade;
 import com.oxsys.topcon.model.Vaga;
+import com.oxsys.topcon.model.Veiculo;
 import com.oxsys.topcon.model.auth.Funcionalidade;
 import com.oxsys.topcon.model.auth.Permissao;
 
@@ -23,6 +24,7 @@ public class RepositoryConfig extends RepositoryRestMvcConfiguration {
         config.exposeIdsFor(Vaga.class);
         config.exposeIdsFor(Funcionalidade.class);
         config.exposeIdsFor(Permissao.class);
+        config.exposeIdsFor(Veiculo.class);
     }
     
 
